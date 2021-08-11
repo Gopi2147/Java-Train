@@ -1,0 +1,47 @@
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+          
+      <struts-config>
+      <form-beans>
+      <form-bean name="homeform" type="com.forms.HomeForm"></form-bean>
+       <!-- <form-bean name="homeform" type="com.forms.ProfileForm"></form-bean> --> 
+       <!-- <form-bean name="homeform" type="com.forms.TicketForm"></form-bean> -->
+       <form-bean name="ticketform" type="com.forms.TicketForm"></form-bean>
+      </form-beans>
+      
+      <action-mappings>
+      <action name="homeform" path="/home" scope="session" type="com.action.UserAction">
+      <forward name="user" path="/user.jsp"></forward>
+      <forward name="admin" path="/admin.jsp"></forward>
+      <forward name="error" path="/error.jsp"></forward>
+      </action>
+      
+      <action path="/logout" scope="session" type="com.action.LogoutAction">
+      <forward name="logout" path="/home.jsp" redirect="false"></forward>     
+      </action>     
+       <action name="homeform" path="/submit" scope="session" type="com.actions.UserAction">
+       <forward name="user" path="/user.jsp" redirect="true"></forward>
+       <forward name="admin" path="/admin.jsp" redirect="true"></forward>
+       <forward name="error" path="/error.jsp"></forward>    
+    </action>
+    <action name="homeform" path="/profile" scope="session" type="com.action.ProfileAction">
+    <forward name="success" path="/profile.jsp"></forward>
+    </action>
+    <action name="homeform" path="/ticket" scope="session" type="com.action.UserAction">
+      <forward name="user" path="/raiseticket.jsp"></forward>
+      <forward name="failed" path="/error.jsp"></forward> </action> 
+       <action name="ticketform" path="/ticket" scope="session" type="com.action.TicketAction">
+       <forward name="added" path="/success.jsp" redirect="true"></forward>
+       <forward name="failed" path="/error.jsp"></forward></action>  
+        <action name="homeform" path="/open" scope="session" type="com.action.OpenTicketAction">
+    <forward name="success" path="/openticket.jsp"></forward></action>
+    <action name="homeform" path="/adhistory" scope="session" type="com.action.AdminHistoryAction">
+    <forward name="success" path="/adminhis.jsp" redirect="true"></forward></action>
+        <action name="homeform" path="/history" scope="session" type="com.action.HistoryAction">
+    <forward name="history" path="/history.jsp"></forward>
+    </action>
+     <action name="homeform" path="/adopen" scope="session" type="com.action.AdminOpenAction">
+    <forward name="success" path="/adminopen.jsp" redirect="true"></forward></action>
+      </action-mappings>     
+      </struts-config>    
